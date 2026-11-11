@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gustavo Unocc | Portafolio Profesional Netlify</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#F3E5AB',
+                            500: '#D4AF37', // Refined metallic gold accent
+                            600: '#AA8C2C',
+                            glow: 'rgba(212, 175, 55, 0.25)',
+                        },
+                        obsidian: {
+                            bg: '#0B0C10',     // Deep Obsidian Background
+                            card: '#12141C',   // Obsidian Card Surface
+                            border: '#1F2430'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Glassmorphism Styles */
+        .glass-panel {
+            background: rgba(18, 20, 28, 0.75);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(212, 175, 55, 0.12);
+        }
+        
+        .glass-nav {
+            background: rgba(11, 12, 16, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFFFFF 30%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-glow {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
+        }
+
+        .gold-glow-hover:hover {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.35);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0C10;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1F2430;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+    </style>
+</head>
+<body class="bg-obsidian-bg text-slate-200 font-sans antialiased selection:bg-gold-500 selection:text-black">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#hero" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center font-heading font-bold text-obsidian-bg text-xl shadow-lg group-hover:scale-105 transition-transform">
+                        GU
+                    </div>
+                    <span class="font-heading font-bold text-xl tracking-wide text-white group-hover:text-gold-400 transition-colors">
+                        GUSTAVO<span class="text-gold-500">.UNOCC</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#about" class="text-sm font-medium text-slate-300 hover:text-gold-400 transition-colors">Sobre Mí</a>
+                    <a href="#experience" class="text-sm font-medium text-slate-300 hover:text-gold-400 transition-colors">Experiencia</a>
+                    <a href="#skills" class="text-sm font-medium text-slate-300 hover:text-gold-400 transition-colors">Tech Stack</a>
+                    <a href="#projects" class="text-sm font-medium text-slate-300 hover:text-gold-400 transition-colors">Proyectos</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-xl bg-gold-500 text-obsidian-bg font-semibold text-sm hover:bg-gold-400 transition-all gold-glow-hover transform hover:-translate-y-0.5">
+                        Contacto
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="text-slate-300 hover:text-gold-400 focus:outline-none p-2" aria-label="Abrir Menú">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-obsidian-border px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="block py-2 text-slate-300 hover:text-gold-400 font-medium border-b border-slate-800">Sobre Mí</a>
+            <a href="#experience" class="block py-2 text-slate-300 hover:text-gold-400 font-medium border-b border-slate-800">Experiencia</a>
+            <a href="#skills" class="block py-2 text-slate-300 hover:text-gold-400 font-medium border-b border-slate-800">Tech Stack</a>
+            <a href="#projects" class="block py-2 text-slate-300 hover:text-gold-400 font-medium border-b border-slate-800">Proyectos</a>
+            <a href="#contact" class="block py-2.5 mt-2 text-center rounded-xl bg-gold-500 text-obsidian-bg font-semibold">Contacto</a>
+        </div>
+    </header>
+
+    <!-- SECTION 1: HERO HEADER -->
+    <section id="hero" class="min-h-screen flex items-center pt-24 pb-16 relative overflow-hidden">
+        <!-- Background Decorative Glows -->
+        <div class="absolute top-1/4 left-10 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 bg-amber-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-gold-400 border border-gold-500/30 text-xs sm:text-sm font-medium">
+                        <span class="w-2 h-2 rounded-full bg-gold-400 animate-ping"></span>
+                        Estudiante APSTI • Acobamba, Huancavelica, Perú
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl font-heading font-extrabold tracking-tight text-white leading-tight">
+                        Hola, soy <br class="hidden sm:block"/>
+                        <span class="gold-gradient-text">GUSTAVO UNOCC</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-300 font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Estudiante de <strong class="text-white font-semibold">Arquitectura de Plataformas y Servicios de Tecnologías de la Información</strong> en el <strong class="text-gold-400 font-semibold">IESTP "Manuel Scorza Torre"</strong>. Especializado en desarrollo web, soluciones móviles, infraestructura TI y soporte técnico integral.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#projects" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gold-500 text-obsidian-bg font-bold text-base hover:bg-gold-400 transition-all duration-300 gold-glow hover:scale-105 flex items-center justify-center gap-2">
+                            Explorar Proyectos <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </a>
+                        <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-panel text-white font-semibold text-base border border-slate-700 hover:border-gold-500/50 hover:text-gold-400 transition-all duration-300 flex items-center justify-center gap-2">
+                            Contactar Ahora
+                        </a>
+                    </div>
+
+                    <!-- Social Quick Links -->
+                    <div class="flex items-center justify-center lg:justify-start gap-5 pt-4 text-slate-400">
+                        <a href="https://github.com" target="_blank" rel="noopener" class="hover:text-gold-400 text-2xl transition-colors" aria-label="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener" class="hover:text-gold-400 text-2xl transition-colors" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:gustavo.unocc@example.com" class="hover:text-gold-400 text-2xl transition-colors" aria-label="Email">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Profile Visual Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-gold-500 to-amber-700 rounded-3xl blur opacity-25"></div>
+                        
+                        <div class="relative glass-panel rounded-3xl p-8 border border-slate-800 shadow-2xl space-y-6">
+                            <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-tr from-slate-900 to-slate-800 p-1 border-2 border-gold-500/50 relative shadow-inner">
+                                <div class="w-full h-full rounded-full bg-obsidian-bg flex items-center justify-center text-gold-400 text-5xl">
+                                    <i class="fa-solid fa-user-gear"></i>
+                                </div>
+                                <div class="absolute bottom-1 right-1 w-6 h-6 bg-emerald-500 rounded-full border-2 border-obsidian-bg" title="Disponible para oportunidades"></div>
+                            </div>
+
+                            <div class="text-center space-y-1">
+                                <h3 class="text-xl font-bold text-white">Gustavo Unocc</h3>
+                                <p class="text-xs text-gold-400 uppercase tracking-widest font-semibold">Desarrollador & Técnico APSTI</p>
+                                <p class="text-xs text-slate-400"><i class="fa-solid fa-location-dot text-gold-500 mr-1"></i>Acobamba, Huancavelica</p>
+                            </div>
+
+                            <div class="space-y-3 pt-3 text-xs border-t border-slate-800">
+                                <div class="flex justify-between items-center text-slate-300">
+                                    <span class="text-slate-400"><i class="fa-solid fa-building-columns text-gold-400 mr-2"></i>Institución:</span>
+                                    <span class="font-medium text-right text-white">IESTP Manuel Scorza Torre</span>
+                                </div>
+                                <div class="flex justify-between items-center text-slate-300">
+                                    <span class="text-slate-400"><i class="fa-solid fa-graduation-cap text-gold-400 mr-2"></i>Carrera:</span>
+                                    <span class="font-medium text-white">APSTI</span>
+                                </div>
+                                <div class="flex justify-between items-center text-slate-300">
+                                    <span class="text-slate-400"><i class="fa-solid fa-server text-gold-400 mr-2"></i>Despliegue:</span>
+                                    <span class="font-semibold text-emerald-400">Netlify Ready</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: ABOUT ME & EXPERIENCE -->
+    <section id="about" class="py-20 bg-slate-950/60 border-y border-slate-800/80 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-gold-500 tracking-widest uppercase mb-2">Trayectoria & Antecedentes</h2>
+                <p class="text-3xl sm:text-4xl font-heading font-bold text-white">Sobre Mí & Experiencia</p>
+                <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                
+                <!-- About Description -->
+                <div class="glass-panel p-8 rounded-2xl border border-slate-800 space-y-5">
+                    <h3 class="text-2xl font-bold text-white flex items-center gap-3">
+                        <i class="fa-solid fa-user-check text-gold-400"></i> Perfil Profesional
+                    </h3>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Apasionado por la tecnología y la transformación digital de procesos. Mi formación técnica abarca desde la administración de plataformas, infraestructura de redes y gestión de bases de datos, hasta la creación de software móvil y portales web interactivos.
+                    </p>
+                    <p class="text-slate-300 text-sm leading-relaxed">
+                        Resido en Acobamba, Huancavelica, lo cual me motiva a desarrollar soluciones tecnológicas orientadas al crecimiento local, el turismo, la gestión académica y el soporte técnico para instituciones y negocios regionales.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-4 border-t border-slate-800">
+                        <div class="p-3 rounded-xl bg-obsidian-bg border border-slate-800">
+                            <p class="text-xs text-slate-400">Soporte y Redes</p>
+                            <p class="text-sm font-bold text-gold-400">Hardware & Linux</p>
+                        </div>
+                        <div class="p-3 rounded-xl bg-obsidian-bg border border-slate-800">
+                            <p class="text-xs text-slate-400">Desarrollo Multiplataforma</p>
+                            <p class="text-sm font-bold text-gold-400">Flutter & Web</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Work Experience Card (Municipalidad Provincial de Acobamba) -->
+                <div id="experience" class="glass-panel p-8 rounded-2xl border border-slate-800 space-y-6 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 px-4 py-1.5 bg-gold-500 text-obsidian-bg text-xs font-bold rounded-bl-xl">
+                        Prácticas Pre-Profesionales
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-white flex items-center gap-3">
+                        <i class="fa-solid fa-briefcase text-gold-400"></i> Experiencia Laboral
+                    </h3>
+
+                    <div class="space-y-4">
+                        <div class="border-l-2 border-gold-500 pl-4 space-y-2">
+                            <div class="flex flex-wrap justify-between items-center gap-2">
+                                <h4 class="text-lg font-bold text-white">Prácticas en Logística y Abastecimiento</h4>
+                                <span class="text-xs font-medium text-gold-400 px-2.5 py-0.5 rounded-full bg-gold-500/10 border border-gold-500/30">
+                                    Municipalidad Provincial de Acobamba
+                                </span>
+                            </div>
+                            <p class="text-xs text-slate-400"><i class="fa-solid fa-calendar text-gold-500 mr-1"></i> Área de Logística y Adquisiciones</p>
+                            <ul class="text-slate-300 text-xs space-y-2 pt-2 list-disc list-inside">
+                                <li>Asistencia técnica en la gestión digital de requerimientos e inventario informático del área.</li>
+                                <li>Mantenimiento preventivo y correctivo de equipos de cómputo e impresoras de la oficina.</li>
+                                <li>Soporte al usuario interno en el uso de software de gestión pública y redes de área local (LAN).</li>
+                                <li>Organización de bases de datos documentarias para el control eficiente de insumos.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: TECH STACK & SKILLS -->
+    <section id="skills" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-gold-500 tracking-widest uppercase mb-2">Dominio Técnico</h2>
+                <p class="text-3xl sm:text-4xl font-heading font-bold text-white">Skills & Tech Stack</p>
+                <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Category 1: Mobile -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-gold-500/40 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center text-2xl mb-4 border border-gold-500/20">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Desarrollo Móvil</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-center justify-between">
+                            <span><i class="fa-solid fa-check text-gold-400 mr-2 text-xs"></i>Flutter</span>
+                            <span class="text-xs text-slate-400">Avanzado</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span><i class="fa-solid fa-check text-gold-400 mr-2 text-xs"></i>Dart</span>
+                            <span class="text-xs text-slate-400">Intermedio</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span><i class="fa-solid fa-check text-gold-400 mr-2 text-xs"></i>SQLite</span>
+                            <span class="text-xs text-slate-400">Local DB</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span><i class="fa-solid fa-check text-gold-400 mr-2 text-xs"></i>Android SDK</span>
+                            <span class="text-xs text-slate-400">Java Native</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Category 2: Web -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-gold-500/40 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center text-2xl mb-4 border border-gold-500/20">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Desarrollo Web</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-center justify-between">
+                            <span><i class="fa-solid fa-check text-gold-400 mr-2 text-xs"></i>WordPress & Elementor</span>
+                            <span class="text-xs text-slate-400">CMS</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span><i class="fa-solid fa-check text-gold-400 mr-2 text-xs"></i>HTML5 & CSS3</span>
+                            <span class="text-xs text-slate-400">Frontend</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span><i class="fa-solid fa-check text-gold-400 mr-2 text-xs"></i>JavaScript</span>
+                            <span class="text-xs text-slate-400">ES6+</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span><i class="fa-solid fa-check text-gold-400 mr-2 text-xs"></i>PHP & MySQL</span>
+                            <span class="text-xs text-slate-400">Backend</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Category 3: Systems & Tools -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-gold-500/40 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center text-2xl mb-4 border border-gold-500/20">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Lenguajes & Tools</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-center justify-between">
+                            <span><i class="fa-solid fa-check text-gold-400 mr-2 text-xs"></i>Java</span>
+                            <span class="text-xs text-slate-400">POO</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span><i class="fa-solid fa-check text-gold-400 mr-2 text-xs"></i>C++</span>
+                            <span class="text-xs text-slate-400">Fundamentos</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span><i class="fa-solid fa-check text-gold-400 mr-2 text-xs"></i>Git & GitHub</span>
+                            <span class="text-xs text-slate-400">Control Versiones</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span><i class="fa-solid fa-check text-gold-400 mr-2 text-xs"></i>Linux</span>
+                            <span class="text-xs text-slate-400">Terminal</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Category 4: IT Infrastructure -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-gold-500/40 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-gold-500/10 text-gold-400 flex items-center justify-center text-2xl mb-4 border border-gold-500/20">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Infraestructura APSTI</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li class="flex items-center justify-between">
+                            <span><i class="fa-solid fa-check text-gold-400 mr-2 text-xs"></i>Redes LAN / Routers</span>
+                            <span class="text-xs text-slate-400">Cisco/Mikrotik</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span><i class="fa-solid fa-check text-gold-400 mr-2 text-xs"></i>Mantenimiento Hardware</span>
+                            <span class="text-xs text-slate-400">Diagnóstico</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span><i class="fa-solid fa-check text-gold-400 mr-2 text-xs"></i>Servidores & Hosting</span>
+                            <span class="text-xs text-slate-400">Netlify/Cloud</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span><i class="fa-solid fa-check text-gold-400 mr-2 text-xs"></i>Soporte Usuario TI</span>
+                            <span class="text-xs text-slate-400">Asistencia</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: FILTERABLE PROJECTS GRID -->
+    <section id="projects" class="py-20 bg-slate-950/60 border-t border-slate-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-gold-500 tracking-widest uppercase mb-2">Proyectos & Soluciones</h2>
+                <p class="text-3xl sm:text-4xl font-heading font-bold text-white">Portafolio Destacado</p>
+                <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="flex justify-center flex-wrap gap-3 mb-12">
+                <button onclick="filterProjects('all')" class="tab-btn active px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all border border-gold-500/30 bg-gold-500 text-obsidian-bg">
+                    Todos
+                </button>
+                <button onclick="filterProjects('web')" class="tab-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all border border-slate-800 glass-panel text-slate-300 hover:text-gold-400">
+                    Web Platforms
+                </button>
+                <button onclick="filterProjects('mobile')" class="tab-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all border border-slate-800 glass-panel text-slate-300 hover:text-gold-400">
+                    Apps Móviles
+                </button>
+                <button onclick="filterProjects('systems')" class="tab-btn px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all border border-slate-800 glass-panel text-slate-300 hover:text-gold-400">
+                    Sistemas & TI
+                </button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Project 1: Turismo Acobamba -->
+                <div class="project-card web mobile glass-panel rounded-2xl overflow-hidden border border-slate-800 hover:border-gold-500/40 transition-all duration-300 flex flex-col group">
+                    <div class="h-48 bg-slate-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian-card to-transparent z-10"></div>
+                        <i class="fa-solid fa-map-location-dot text-6xl text-slate-700 group-hover:scale-110 group-hover:text-gold-500/80 transition-all duration-500"></i>
+                        <span class="absolute top-4 right-4 bg-gold-500 text-obsidian-bg text-xs font-bold px-3 py-1 rounded-full z-20">
+                            Web & Mobile
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white group-hover:text-gold-400 transition-colors">Turismo Acobamba</h3>
+                            <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+                                Plataforma turística interactiva con mapas, rutas guiadas y catálogo completo de los atractivos culturales y naturales de la provincia de Acobamba.
+                            </p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-xs font-medium text-gold-400 border border-slate-800">Flutter</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-xs font-medium text-gold-400 border border-slate-800">WordPress API</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-xs font-medium text-gold-400 border border-slate-800">SQLite</span>
+                            </div>
+                            <button onclick="openModal('Turismo Acobamba', 'Plataforma diseñada para reactivar el turismo local en Acobamba. Ofrece itinerarios de viaje, ubicación geográfica de restos arqueológicos, gastronomía y hospedajes con soporte offline.', ['Flutter', 'Dart', 'WordPress', 'Leaflet / Google Maps', 'SQLite'])" class="text-xs font-bold text-gold-400 hover:text-gold-300 flex items-center gap-1">
+                                Ver Ficha del Proyecto <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Asistente Académico Pro -->
+                <div class="project-card web systems glass-panel rounded-2xl overflow-hidden border border-slate-800 hover:border-gold-500/40 transition-all duration-300 flex flex-col group">
+                    <div class="h-48 bg-slate-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian-card to-transparent z-10"></div>
+                        <i class="fa-solid fa-robot text-6xl text-slate-700 group-hover:scale-110 group-hover:text-gold-500/80 transition-all duration-500"></i>
+                        <span class="absolute top-4 right-4 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full z-20">
+                            Gestión & AI Tools
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white group-hover:text-gold-400 transition-colors">Asistente Académico Pro</h3>
+                            <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+                                Sistema de planificación de proyectos educativos, cálculo automático de notas ponderadas y organización inteligente de horarios de estudio.
+                            </p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-xs font-medium text-gold-400 border border-slate-800">JavaScript</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-xs font-medium text-gold-400 border border-slate-800">PHP</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-xs font-medium text-gold-400 border border-slate-800">MySQL</span>
+                            </div>
+                            <button onclick="openModal('Asistente Académico Pro', 'Herramienta web intuitiva que ayuda a los estudiantes a organizar sus materias, estimar notas requeridas para aprobar cursos y gestionar entregas de trabajos con recordatorios automáticos.', ['HTML5', 'Tailwind CSS', 'JavaScript ES6', 'PHP', 'MySQL'])" class="text-xs font-bold text-gold-400 hover:text-gold-300 flex items-center gap-1">
+                                Ver Ficha del Proyecto <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: MedTime -->
+                <div class="project-card mobile systems glass-panel rounded-2xl overflow-hidden border border-slate-800 hover:border-gold-500/40 transition-all duration-300 flex flex-col group">
+                    <div class="h-48 bg-slate-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian-card to-transparent z-10"></div>
+                        <i class="fa-solid fa-pills text-6xl text-slate-700 group-hover:scale-110 group-hover:text-gold-500/80 transition-all duration-500"></i>
+                        <span class="absolute top-4 right-4 bg-emerald-500 text-obsidian-bg text-xs font-bold px-3 py-1 rounded-full z-20">
+                            App Móvil Offline
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white group-hover:text-gold-400 transition-colors">MedTime</h3>
+                            <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+                                Aplicación Android en Java para el control estricto de horarios de medicación. Funciona totalmente offline con almacenamiento interno en SQLite.
+                            </p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-xs font-medium text-gold-400 border border-slate-800">Java</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-xs font-medium text-gold-400 border border-slate-800">Android SDK</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-xs font-medium text-gold-400 border border-slate-800">SQLite</span>
+                            </div>
+                            <button onclick="openModal('MedTime', 'Aplicación desarrollada para garantizar la adherencia al tratamiento médico. Cuenta con creación de alarmas locales, historial de tomas de medicamentos e interfaz simplificada de fácil lectura.', ['Java', 'Android SDK', 'SQLite', 'Local Notifications'])" class="text-xs font-bold text-gold-400 hover:text-gold-300 flex items-center gap-1">
+                                Ver Ficha del Proyecto <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: MobiFix Solutions -->
+                <div class="project-card web systems glass-panel rounded-2xl overflow-hidden border border-slate-800 hover:border-gold-500/40 transition-all duration-300 flex flex-col group">
+                    <div class="h-48 bg-slate-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian-card to-transparent z-10"></div>
+                        <i class="fa-solid fa-screwdriver-wrench text-6xl text-slate-700 group-hover:scale-110 group-hover:text-gold-500/80 transition-all duration-500"></i>
+                        <span class="absolute top-4 right-4 bg-amber-500 text-obsidian-bg text-xs font-bold px-3 py-1 rounded-full z-20">
+                            WordPress & Servicio Técnico
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white group-hover:text-gold-400 transition-colors">MobiFix Solutions</h3>
+                            <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+                                Plan integral de negocio y portal web corporativo para taller de soporte técnico, cotización rápida de reparaciones y agendamiento de citas.
+                            </p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-xs font-medium text-gold-400 border border-slate-800">WordPress</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-xs font-medium text-gold-400 border border-slate-800">Elementor</span>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-900 text-xs font-medium text-gold-400 border border-slate-800">Plan Técnico TI</span>
+                            </div>
+                            <button onclick="openModal('MobiFix Solutions', 'Proyecto comercial de soporte informático y de telefonía. Incluye cotizador interactivo de repuestos, catálogo de servicios técnicos y estrategia de atención al cliente.', ['WordPress', 'Elementor', 'WhatsApp Business API', 'Soporte Hardware'])" class="text-xs font-bold text-gold-400 hover:text-gold-300 flex items-center gap-1">
+                                Ver Ficha del Proyecto <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: CONTACT SECTION WITH COPY BUTTONS -->
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-gold-500 tracking-widest uppercase mb-2">Ponte en Contacto</h2>
+                <p class="text-3xl sm:text-4xl font-heading font-bold text-white">Contacto Profesional</p>
+                <div class="w-16 h-1 bg-gold-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Direct Interactive Contact Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="glass-panel p-8 rounded-2xl border border-slate-800 space-y-6">
+                        <h3 class="text-2xl font-bold text-white">Información Directa</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Haz clic en los botones de la derecha para copiar los datos de contacto al portapapeles.
+                        </p>
+
+                        <!-- Copy Item 1: Email -->
+                        <div class="p-4 rounded-xl bg-obsidian-bg border border-slate-800 flex items-center justify-between gap-3">
+                            <div class="flex items-center gap-3 overflow-hidden">
+                                <div class="w-10 h-10 rounded-lg bg-gold-500/10 text-gold-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div class="truncate">
+                                    <p class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Correo</p>
+                                    <p id="email-text" class="text-xs sm:text-sm text-slate-200 font-medium truncate">gustavo.unocc@example.com</p>
+                                </div>
+                            </div>
+                            <button onclick="copyToClipboard('email-text', 'Correo copiado al portapapeles')" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-gold-500 hover:text-obsidian-bg text-slate-300 text-xs font-semibold transition-colors shrink-0">
+                                <i class="fa-solid fa-copy"></i> Copiar
+                            </button>
+                        </div>
+
+                        <!-- Copy Item 2: Phone/WhatsApp -->
+                        <div class="p-4 rounded-xl bg-obsidian-bg border border-slate-800 flex items-center justify-between gap-3">
+                            <div class="flex items-center gap-3 overflow-hidden">
+                                <div class="w-10 h-10 rounded-lg bg-gold-500/10 text-gold-400 flex items-center justify-center shrink-0">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <div class="truncate">
+                                    <p class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Ubicación / Teléfono</p>
+                                    <p id="phone-text" class="text-xs sm:text-sm text-slate-200 font-medium truncate">Acobamba, Huancavelica - Perú</p>
+                                </div>
+                            </div>
+                            <button onclick="copyToClipboard('phone-text', 'Ubicación copiada al portapapeles')" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-gold-500 hover:text-obsidian-bg text-slate-300 text-xs font-semibold transition-colors shrink-0">
+                                <i class="fa-solid fa-copy"></i> Copiar
+                            </button>
+                        </div>
+
+                        <!-- Social Media External Links -->
+                        <div class="pt-4 border-t border-slate-800 space-y-3">
+                            <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Perfiles Profesionales</p>
+                            <div class="grid grid-cols-2 gap-3">
+                                <a href="https://github.com" target="_blank" class="p-3 rounded-xl bg-obsidian-bg border border-slate-800 hover:border-gold-500/50 text-slate-300 hover:text-gold-400 text-xs font-semibold flex items-center justify-center gap-2 transition-colors">
+                                    <i class="fa-brands fa-github text-base"></i> GitHub
+                                </a>
+                                <a href="https://linkedin.com" target="_blank" class="p-3 rounded-xl bg-obsidian-bg border border-slate-800 hover:border-gold-500/50 text-slate-300 hover:text-gold-400 text-xs font-semibold flex items-center justify-center gap-2 transition-colors">
+                                    <i class="fa-brands fa-linkedin text-base"></i> LinkedIn
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Netlify Server Badge -->
+                        <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-500/30 text-xs text-emerald-300 flex items-center gap-3">
+                            <i class="fa-solid fa-bolt text-xl text-emerald-400"></i>
+                            <div>
+                                <p class="font-bold">Optimizado para Netlify</p>
+                                <p class="text-[11px] text-slate-400">Despliegue continuo con SSL automático e CDN global.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-7">
+                    <form id="contact-form" class="glass-panel p-8 rounded-2xl border border-slate-800 space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label for="name" class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Nombre</label>
+                                <input type="text" id="name" required placeholder="Tu nombre" class="w-full px-4 py-3 rounded-xl bg-obsidian-bg border border-slate-800 text-slate-200 focus:outline-none focus:border-gold-500 transition-colors text-sm">
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="email" class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Correo</label>
+                                <input type="email" id="email" required placeholder="tu@email.com" class="w-full px-4 py-3 rounded-xl bg-obsidian-bg border border-slate-800 text-slate-200 focus:outline-none focus:border-gold-500 transition-colors text-sm">
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="subject" class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Asunto</label>
+                            <input type="text" id="subject" required placeholder="Motivo de consulta" class="w-full px-4 py-3 rounded-xl bg-obsidian-bg border border-slate-800 text-slate-200 focus:outline-none focus:border-gold-500 transition-colors text-sm">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="message" class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Mensaje</label>
+                            <textarea id="message" rows="5" required placeholder="Escribe tu mensaje..." class="w-full px-4 py-3 rounded-xl bg-obsidian-bg border border-slate-800 text-slate-200 focus:outline-none focus:border-gold-500 transition-colors text-sm resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gold-500 hover:bg-gold-400 text-obsidian-bg font-bold text-base transition-all duration-300 gold-glow flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-black border-t border-slate-800 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© <span id="year"></span> Gustavo Unocc. Todos los derechos reservados.</p>
+            <p class="mt-2 text-slate-600">IESTP Manuel Scorza Torre • Servidor: Netlify Web Application</p>
+        </div>
+    </footer>
+
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+        <div class="glass-panel border border-slate-800 max-w-lg w-full rounded-2xl p-6 relative space-y-4">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 id="modal-title" class="text-2xl font-bold text-white"></h3>
+            <p id="modal-description" class="text-slate-300 text-sm leading-relaxed"></p>
+            <div>
+                <h4 class="text-xs font-semibold text-gold-400 uppercase tracking-wider mb-2">Tecnologías Usadas:</h4>
+                <div id="modal-tags" class="flex flex-wrap gap-2"></div>
+            </div>
+            <div class="pt-4 border-t border-slate-800 flex justify-end">
+                <button onclick="closeModal()" class="px-5 py-2 rounded-xl bg-slate-800 text-white font-semibold text-xs hover:bg-slate-700 transition-colors">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 hidden glass-panel border border-gold-500/50 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-gold-400 text-xl"></i>
+        <div>
+            <p id="toast-title" class="font-bold text-sm">¡Éxito!</p>
+            <p id="toast-message" class="text-xs text-slate-300">Operación realizada correctamente.</p>
+        </div>
+    </div>
+
+    <!-- Hidden Input for ExecCommand Clipboard Backup -->
+    <input type="text" id="clipboard-hidden-input" class="sr-only" aria-hidden="true" tabindex="-1">
+
+    <!-- Interactive Script -->
+    <script>
+        // Dynamic Current Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Filter Projects Category Logic
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.tab-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-gold-500', 'text-obsidian-bg');
+                btn.classList.add('glass-panel', 'text-slate-300');
+            });
+
+            event.currentTarget.classList.remove('glass-panel', 'text-slate-300');
+            event.currentTarget.classList.add('bg-gold-500', 'text-obsidian-bg');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // Modal Logic
+        function openModal(title, description, tags) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-description').textContent = description;
+            
+            const tagsContainer = document.getElementById('modal-tags');
+            tagsContainer.innerHTML = '';
+            
+            tags.forEach(tag => {
+                const tagSpan = document.createElement('span');
+                tagSpan.className = 'px-2.5 py-1 rounded-md bg-slate-900 text-xs font-medium text-gold-400 border border-slate-800';
+                tagSpan.textContent = tag;
+                tagsContainer.appendChild(tagSpan);
+            });
+
+            document.getElementById('project-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('project-modal').classList.add('hidden');
+        }
+
+        // Copy to Clipboard Utility using document.execCommand
+        function copyToClipboard(elementId, successMsg) {
+            const textToCopy = document.getElementById(elementId).textContent;
+            const hiddenInput = document.getElementById('clipboard-hidden-input');
+            
+            hiddenInput.value = textToCopy;
+            hiddenInput.select();
+            hiddenInput.setSelectionRange(0, 99999);
+            
+            try {
+                document.execCommand('copy');
+                showToast('¡Copiado!', successMsg);
+            } catch (err) {
+                showToast('Error', 'No se pudo copiar el texto');
+            }
+        }
+
+        // Toast Notification System
+        function showToast(title, message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-title').textContent = title;
+            document.getElementById('toast-message').textContent = message;
+            
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3500);
+        }
+
+        // Contact Form Submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('¡Mensaje enviado!', 'Gracias por escribir. Me pondré en contacto contigo a la brevedad.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
